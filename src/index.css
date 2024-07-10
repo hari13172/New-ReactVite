@@ -1,0 +1,17 @@
+/* src/index.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* * {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  max-width: 1980px;
+  margin: 0 auto;
+  width: 100%;
+} */
