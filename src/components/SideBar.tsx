@@ -12,6 +12,7 @@ import logo from "../../public/images/logo.png";
 function SideBar() {
   const [open, setOpen] = useState(true);
   const location = useLocation();
+  const [breadcrumbTitle, setBreadcrumbTitle] = useState("Home");
 
   const Menus = [
     { id: 1, title: "Network", path: "/network", icon: <FaNetworkWired /> },
@@ -20,6 +21,10 @@ function SideBar() {
     { id: 4, title: "Service", path: "/service", icon: <GrServices /> },
     { id: 5, title: "Domains", path: "/domains", icon: <TbWorldPlus /> },
   ];
+
+  const handleMenuClick = (title) => {
+    setBreadcrumbTitle(title);
+  };
 
   return (
     <div className="flex">
@@ -58,6 +63,7 @@ function SideBar() {
             <li
               key={menu.id}
               className="text-gray-300 text-sm flex items-center cursor-pointer p-2 hover:text-white mt-2"
+              onClick={() => handleMenuClick(menu.title)}
             >
               <Link
                 to={menu.path}
@@ -66,7 +72,7 @@ function SideBar() {
                 }`}
               >
                 <span
-                  className={`text-3xl float-left block p-1 ${
+                  className={`text-3xl float-left block p-1 rounded-md ${
                     location.pathname === menu.path ? "bg-blue-700" : ""
                   }`}
                 >
