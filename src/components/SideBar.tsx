@@ -10,7 +10,7 @@ import { Link, useLocation } from "react-router-dom";
 import logo from "../../public/images/logo.png";
 
 function SideBar() {
-  const [open, setOpen] = useState(true);
+  const [open, setOpen] = useState(false);
   const location = useLocation();
   const [breadcrumbTitle, setBreadcrumbTitle] = useState("Home");
 

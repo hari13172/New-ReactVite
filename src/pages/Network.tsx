@@ -5,6 +5,7 @@ import Badge from "../components/Badge";
 import qr from "../../public/images/qr.png";
 import info from "../../public/images/information.png";
 import DropDown from "../components/DropDown";
+import { TbCloudNetwork } from "react-icons/tb";
 
 function Network() {
   const pageTitle = "Network";
@@ -35,15 +36,16 @@ function Network() {
   };
 
   return (
-    <div className="p-8">
+    <div className="w-full p-8">
       <span className="flex items-center gap-3 text-[#979797] font-medium">
-        <BreadCrumb title={pageTitle} />
+        <BreadCrumb title={pageTitle} icon={<TbCloudNetwork />} />
       </span>
-
       <div className="flex">
-        <Alerts />
+        <Alerts
+          title="info"
+          message="Network Is A Area There We Can Generate A VPN And The Lab Will Be Connected Automatically In A Single Click And We Can Make It As Seamless"
+        />
       </div>
-
       <div className="w-full mt-6 flex flex-col items-start p-6 rounded-xl bg-white shadow-md">
         <div className="w-full flex items-center justify-between pb-4 border-b-2 border-gray-300">
           <div className="flex items-center justify-center gap-8">
@@ -102,35 +104,35 @@ function Network() {
           </div>
         </div>
       </div>
-
       {/* Modal */}
+
       {showModal && (
         <div className="fixed top-0 left-0 w-full h-full flex items-center justify-center z-50">
           <div
             onClick={closeModal}
             className="absolute top-0 left-0 w-full h-full bg-black opacity-50"
           ></div>
-          <div className="bg-white rounded-lg p-8 max-w-xl w-full mx-auto z-50">
-            {/* Increase max-w-xl and adjust padding as needed */}
-            <h2 className="text-2xl font-semibold mb-4">
+          <div className="bg-white rounded-lg p-8 max-w-2xl w-full mx-auto z-50">
+            {/* Increased max-w-3xl to widen the modal box */}
+            <h2 className="text-xl font-semibold mb-4 px-4">
               Add New Device To The Network
             </h2>
 
-            <div className="flex flex-col gap-4">
-              <div className="border-2 rounded-2xl">
-                <div className="flex flex-col p-6 gap-4">
-                  <label>Device Name</label>
+            <div className=" flex flex-col gap-4">
+              <div className=" border-2 border-gray-400 rounded-xl">
+                <div className="  flex flex-col justify-start items-start p-4 gap-4 ">
+                  <label className="font-semibold">Device Name</label>
                   <input
                     type="text"
                     placeholder="Test Device"
-                    className="border-none outline-none w-full text-base font-light px-8 py-2 rounded-md"
+                    className="outline-none text-start w-full text-base font-light px-8 py-2  focus:outline-none border-b-2  border-gray-400"
                   />
                 </div>
               </div>
 
-              <div className="border-2 rounded-2xl">
-                <div className="flex flex-col p-6 gap-4">
-                  <label>Device Name</label>
+              <div className="border-2 border-gray-400 rounded-xl">
+                <div className="flex flex-col p-4 gap-4">
+                  <label>Device Type</label>
                   {/* Example of a custom component (DropDown) */}
                   {/* Ensure the DropDown component handles its own width */}
                   <DropDown
@@ -143,16 +145,22 @@ function Network() {
               </div>
             </div>
 
-            <div className="flex justify-between">
+            <div className="flex justify-between items-center px-4">
               <button
                 onClick={closeModal}
-                className="bg-gray-300 text-gray-800 py-2 px-4 rounded-md mt-4"
+                className="bg-orange-400 text-white py-2 px-4 rounded-md mt-4"
               >
                 Close Modal
               </button>
               <button
                 onClick={closeModal}
-                className="bg-gray-300 text-gray-800 py-2 px-4 rounded-md mt-4"
+                className="bg-red-600 text-white py-2 px-4 rounded-md mt-4"
+              >
+                Delete Device
+              </button>
+              <button
+                onClick={closeModal}
+                className="bg-[#19af66] text-white py-2 px-4 rounded-md mt-4"
               >
                 Add Device
               </button>
