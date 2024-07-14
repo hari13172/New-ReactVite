@@ -37,7 +37,7 @@ function Network() {
   };
 
   return (
-    <div className="w-full p-8">
+    <div className="w-full p-8 ml-28">
       <span className="flex items-center gap-3 text-[#979797] font-medium">
         <BreadCrumb title={pageTitle} icon={<TbCloudNetwork />} />
       </span>

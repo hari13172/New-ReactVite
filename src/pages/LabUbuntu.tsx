@@ -1,4 +1,3 @@
-import React from "react";
 import { SiQwiklabs } from "react-icons/si";
 import BreadCrumb from "../components/BreadCrumb";
 import Badge from "../components/Badge";
@@ -25,9 +24,9 @@ function LabUbuntu() {
             <h1>ubuntu labs</h1>
             <span>LTE 22.04 version with root access</span>
             <div className="flex justify-between items-center gap-2">
-              <Badge value="notrunning" />
-              <Badge value="offline" />
-              <Badge value="online" />
+              <Badge value="notrunning" color="orange" />
+              <Badge value="offline" color="red" />
+              <Badge value="online" color="green"/>
             </div>
           </div>
         </div>

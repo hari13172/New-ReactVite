@@ -6,9 +6,9 @@ import ubuntu from "../../public/images/ubuntu.png";
 import parrot from "../../public/images/parrotos.png";
 import { useNavigate } from "react-router-dom";
 
-i
 
-const Labs: React.FC<LabsProps> = () => {
+
+const Labs: React.FC = () => {
   const pageTitle = "Labs";
 
   const navigate = useNavigate();
@@ -18,7 +18,7 @@ const Labs: React.FC<LabsProps> = () => {
   };
 
   return (
-    <div className="w-full p-8">
+    <div className="w-full p-8 ml-28">
       <span className="flex items-center gap-3 text-[#979797] font-medium">
         <BreadCrumb title={pageTitle} icon={<RiDashboardFill />} />
       </span>
