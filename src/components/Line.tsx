@@ -7,7 +7,7 @@ import {
   markElementClasses,
 } from '@mui/x-charts/LineChart';
 
-const pData = [2400, 1398, 9800, 3908, 4800, 3800, 4300];
+const pData = [10, 65, 60, 39, 48, 38, 100];
 const xLabels = [
   'Page A',
   'Page B',
@@ -21,14 +21,14 @@ const xLabels = [
 export default function TinyLineChart() {
   return (
     <ChartContainer
-      width={500}
-      height={300}
+      width={220}
+      height={150}
       series={[{ type: 'line', data: pData }]}
       xAxis={[{ scaleType: 'point', data: xLabels }]}
       sx={{
         [`& .${lineElementClasses.root}`]: {
           stroke: '#8884d8',
-          strokeWidth: 2,
+          strokeWidth: 3,
         },
         [`& .${markElementClasses.root}`]: {
           stroke: '#8884d8',

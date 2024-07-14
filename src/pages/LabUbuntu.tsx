@@ -38,7 +38,7 @@ function LabUbuntu() {
       </div>
 
       <div className="w-full flex p-[20px] px-[38px] justify-between items-start rounded-2xl bg-white gap-[50px] mt-[30px] relative shadow-lg">
-        <style jsx>{`
+        <style>{`
           .custom-divider {
             position: absolute;
             width: 2px;
@@ -141,15 +141,17 @@ function LabUbuntu() {
         </div>
       </div>
 
-      <div className="fixed bottom-0 right-0 z-20  lg:w-[calc(100%-120px)] bg-blue-950 rounded-lg shadow-2xl">
+      <div className="fixed bottom-0 right-0 z-20  lg:w-[calc(100%-90px)] bg-blue-950 rounded-lg shadow-2xl">
         <div className="flex items-center justify-between py-2 px-8 bg-white">
-          <h1>terminal</h1>
+          <h1>Terminal</h1>
           <BiSolidUpArrow />
         </div>
       </div>
 
 
-      {/* <LineChart /> */}
+
+
+      <LineChart />
       <Line />
     </div>
   );

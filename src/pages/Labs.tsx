@@ -6,9 +6,7 @@ import ubuntu from "../../public/images/ubuntu.png";
 import parrot from "../../public/images/parrotos.png";
 import { useNavigate } from "react-router-dom";
 
-interface LabsProps {
-  jsx: true;
-}
+i
 
 const Labs: React.FC<LabsProps> = () => {
   const pageTitle = "Labs";
