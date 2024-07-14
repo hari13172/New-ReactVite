@@ -7,7 +7,10 @@ import Labs from "./pages/Labs";
 import Service from "./pages/Service";
 import Domain from "./pages/Domain";
 import LabUbuntu from "./pages/LabUbuntu";
-
+// import "primereact/resources/themes/bootstrap4-dark-blue/theme.css"
+// import 'primeflex/primeflex.css';  
+import 'primereact/resources/primereact.css';
+import 'primereact/resources/themes/lara-light-indigo/theme.css';
 function App() {
   return (
     <Router>
