@@ -6,12 +6,14 @@ import pro from "../../public/images/pro.png";
 import { FaCopy, FaPlay } from "react-icons/fa";
 import Copy from "../components/Copy";
 import { BiSolidUpArrow } from "react-icons/bi";
+import LineChart from "../components/LineChart";
+import Line from "../components/Line";
 
 function LabUbuntu() {
   const pageTitle = "Labs/ubuntu";
 
   return (
-    <div className="w-full p-8">
+    <div className="w-full p-8 ml-28">
       <span className="flex items-center gap-3 text-[#979797] font-medium">
         <BreadCrumb title={pageTitle} icon={<SiQwiklabs />} />
       </span>
@@ -145,6 +147,10 @@ function LabUbuntu() {
           <BiSolidUpArrow />
         </div>
       </div>
+
+
+      {/* <LineChart /> */}
+      <Line />
     </div>
   );
 }

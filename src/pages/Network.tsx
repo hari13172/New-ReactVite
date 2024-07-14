@@ -6,6 +6,7 @@ import qr from "../../public/images/qr.png";
 import info from "../../public/images/information.png";
 import DropDown from "../components/DropDown";
 import { TbCloudNetwork } from "react-icons/tb";
+import { RiDeleteBinLine } from "react-icons/ri";
 
 function Network() {
   const pageTitle = "Network";
@@ -98,6 +99,13 @@ function Network() {
                 <img alt="" src={info} width={20} height={20} />
                 <span className="text-center items-center justify-center m-1 capitalize">
                   info
+                </span>
+              </div>
+
+              <div className="flex justify-center items-center cursor-pointer">
+              <RiDeleteBinLine className="w-[25px] h-[25px]"/>
+                <span className="text-center items-center justify-center m-1 capitalize">
+                  Delete
                 </span>
               </div>
             </div>

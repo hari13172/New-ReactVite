@@ -15,9 +15,9 @@ function SideBar() {
   const [breadcrumbTitle, setBreadcrumbTitle] = useState("Home");
 
   const Menus = [
-    { id: 1, title: "Network", path: "/network", icon: <FaNetworkWired /> },
-    { id: 2, title: "Labs", path: "/labs" },
-    { id: 3, title: "Home", path: "/", icon: <FaHome /> },
+    { id: 1, title: "Home", path: "/", icon: <FaHome /> },
+    { id: 2, title: "Network", path: "/network", icon: <FaNetworkWired /> },
+    { id: 3, title: "Labs", path: "/labs" },
     { id: 4, title: "Service", path: "/service", icon: <GrServices /> },
     { id: 5, title: "Domains", path: "/domains", icon: <TbWorldPlus /> },
   ];
@@ -27,11 +27,11 @@ function SideBar() {
   };
 
   return (
-    <div className="flex">
+    <div className="">
       <div
         className={`bg-[#00171f] h-screen p-5 pt-8 ${
           open ? "w-60" : "w-28"
-        } duration-300 relative`}
+        } duration-300 fixed top-0 left-0 z-50`}
       >
         <BsArrowLeftShort
           className={`bg-white text-purple-800 text-3xl rounded-full absolute -right-3 top-9 border border-purple-950 cursor-pointer ${
