@@ -12,7 +12,7 @@ function LabUbuntu() {
   const pageTitle = "Labs/ubuntu";
 
   return (
-    <div className="w-full p-8 ml-28">
+    <div className="w-full p-8">
       <span className="flex items-center gap-3 text-[#979797] font-medium">
         <BreadCrumb title={pageTitle} icon={<SiQwiklabs />} />
       </span>
@@ -140,12 +140,12 @@ function LabUbuntu() {
         </div>
       </div>
 
-      <div className="fixed bottom-0 right-0 z-20  lg:w-[calc(100%-90px)] bg-blue-950 rounded-lg shadow-2xl">
+      {/* <div className="fixed bottom-0 right-0 z-20  lg:w-[calc(100%-90px)] bg-blue-950 rounded-lg shadow-2xl">
         <div className="flex items-center justify-between py-2 px-8 bg-white">
           <h1>Terminal</h1>
           <BiSolidUpArrow />
         </div>
-      </div>
+      </div> */}
 
 
 

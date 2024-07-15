@@ -5,9 +5,10 @@ import { FaHome } from "react-icons/fa";
 import { FaNetworkWired } from "react-icons/fa6";
 import { GrServices } from "react-icons/gr";
 import { RiDashboardFill } from "react-icons/ri";
-import { TbWorldPlus } from "react-icons/tb";
+import { TbCloudNetwork, TbWorldPlus } from "react-icons/tb";
 import { Link, useLocation } from "react-router-dom";
 import logo from "../../public/images/logo.png";
+import { MdArrowForwardIos } from "react-icons/md";
 
 function SideBar() {
   const [open, setOpen] = useState(false);
@@ -15,11 +16,11 @@ function SideBar() {
   const [breadcrumbTitle, setBreadcrumbTitle] = useState("Home");
 
   const Menus = [
-    { id: 1, title: "Home", path: "/", icon: <FaHome /> },
-    { id: 2, title: "Network", path: "/network", icon: <FaNetworkWired /> },
-    { id: 3, title: "Labs", path: "/labs" },
-    { id: 4, title: "Service", path: "/service", icon: <GrServices /> },
-    { id: 5, title: "Domains", path: "/domains", icon: <TbWorldPlus /> },
+    { id: 1, title: "Home", path: "/1/home", icon: <FaHome /> },
+    { id: 2, title: "Network", path: "/1/network", icon: <TbCloudNetwork /> },
+    { id: 3, title: "Labs", path: "/2/labs" },
+    { id: 4, title: "Service", path: "/3/service", icon: <GrServices /> },
+    { id: 5, title: "Domains", path: "/4/domains", icon: <TbWorldPlus /> },
   ];
 
   const handleMenuClick = (title) => {
@@ -27,14 +28,14 @@ function SideBar() {
   };
 
   return (
-    <div className="">
+    <div className="relative">
       <div
         className={`bg-[#00171f] h-screen p-5 pt-8 ${
-          open ? "w-60" : "w-28"
-        } duration-300 fixed top-0 left-0 z-50`}
+          open ? "w-55" : "w-24"
+        } duration-300 sticky top-0 left-0 `}
       >
-        <BsArrowLeftShort
-          className={`bg-white text-purple-800 text-3xl rounded-full absolute -right-3 top-9 border border-purple-950 cursor-pointer ${
+        <MdArrowForwardIos
+          className={`bg-white text-purple-800 text-3xl p-2 rounded-full absolute -right-3 top-[50%] border border-purple-950 cursor-pointer ${
             !open && "rotate-180"
           }`}
           onClick={() => setOpen(!open)}
@@ -45,7 +46,7 @@ function SideBar() {
           <img
             src={logo}
             alt=""
-            className={`rounded cursor-pointer block float-left mr-3 w-[60px] h-[60px] duration-300 ${
+            className={`rounded cursor-pointer block float-left mr-3 w-[50px] h-[50px] duration-300 ${
               !open && "rotate-[360deg]"
             }`}
           />
@@ -72,7 +73,7 @@ function SideBar() {
                 }`}
               >
                 <span
-                  className={`text-3xl float-left block p-1 rounded-md ${
+                  className={`text-2xl float-left block p-1 rounded-md ${
                     location.pathname === menu.path ? "bg-blue-700" : ""
                   }`}
                 >
@@ -98,7 +99,7 @@ function SideBar() {
           ))}
         </div>
 
-        <div className="flex items-center pt-28 text-gray-300 gap-x-2 cursor-pointer p-4 hover:text-white">
+        <div className="flex items-center pt-44 text-gray-300 gap-x-2 cursor-pointer p-4 hover:text-white">
           <span className=" float-left block">
             <RiDashboardFill className="text-3xl" />
           </span>

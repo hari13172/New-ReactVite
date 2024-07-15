@@ -14,11 +14,11 @@ const Labs: React.FC = () => {
   const navigate = useNavigate();
 
   const handleUbnutuClick = () => {
-    navigate("/labs/ubuntu");
+    navigate("/id/labs/ubuntu");
   };
 
   return (
-    <div className="w-full p-8 ml-28">
+    <div className="w-full p-8 ">
       <span className="flex items-center gap-3 text-[#979797] font-medium">
         <BreadCrumb title={pageTitle} icon={<RiDashboardFill />} />
       </span>
