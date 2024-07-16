@@ -1,240 +1,125 @@
-"use client";
 
-// import { API } from "@/api/api";
-// import LoadingBar from "@/components/loadingEffect";
-// import { useRouter } from "next/navigation";
-import { useState } from "react";
-import { useForm, Controller } from "react-hook-form";
-// import "@/styles/auth/signin.scss";
-// import { Toast } from "../components/Alert";
+
 import logo from "../../public/images/logo.png";
-import { FaLock, FaRegMessage } from "react-icons/fa6";
 import signup from "../../public/images/signup.png";
-import shared from "../../public/images/shared.png";
-import hide from "../../public/images/hide.png";
+
+
+import { IconField } from 'primereact/iconfield';
+import { InputIcon } from 'primereact/inputicon';
+import { Button } from 'primereact/button';
+
+import 'primeicons/primeicons.css';
+
+import { InputText } from "primereact/inputtext";
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+
+const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+const usernameRegex = /^[a-zA-Z][a-zA-Z0-9_-]{2,15}$/;
+
+
+
+
 function SignUp() {
-  const [showPassword, SetShowPassword] = useState(false);
-  const [match, SetMatch] = useState(false);
+  const [UserName, setUserName] = useState('')
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+  // const [phoneNumber, setPhoneNumber] = useState('');
+  const [errors, setErrors] = useState({ email: '', password: '', confirmPassword: '', UserName: '' });
 
-  //   const router = useRouter();
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    const validationErrors = {
+      UserName: usernameRegex.test(UserName) ? "" : "Invalid user Format",
+      email: emailRegex.test(email) ? "" : "Invalid email Format",
+      password: passwordRegex.test(password) ? "" : "Password Incorrect",
+      confirmPassword: password === confirmPassword ? "" : "password Doesnot Match",
+    }
+    setErrors(validationErrors);
+    const isValid = Object.values(validationErrors).every(error => error === '');
 
-  const togglePasswordVisibility = () => {
-    SetShowPassword((prevShowPassword) => !prevShowPassword);
-  };
+    if (isValid) {
+      // Handle form submission
+      console.log({ email, password, confirmPassword, UserName });
+    }
 
-  const Visible = () => {
-    SetMatch((prevmatch) => !prevmatch);
-  };
-
-  const form = useForm();
-  const { register, control, handleSubmit, formState } = form;
-  const { errors } = formState;
-  const [loading, setLoading] = useState(false);
-
-  const onSubmit = async (data) => {
-    setLoading(true);
-    // if (data.password == data.confirmpassword) {
-    //   const signupData = await API.signup(data).catch((err) => {
-    //     Toast.error(
-    //       err?.data?.message
-    //         ? err?.data?.message
-    //         : err?.data?.detail?.length
-    //         ? err?.data?.detail[0]?.msg
-    //         : err?.data?.detail
-    //     );
-    //     setLoading(false);
-    //   });
-    //   setLoading(false);
-    //   if (signupData?.data) {
-    //     let signdata = signupData?.data;
-    //     if (signdata?.status) {
-    //       Toast.success(signdata?.message);
-    //       setTimeout(() => {
-    //         router.push(`/auth/verify?email=${data?.email}`);
-    //       }, 2000);
-    //     } else {
-    //       Toast.error(signdata?.message);
-    //     }
-    //   }
-    // } else {
-    //   Toast.error(
-    //     "please check the password and confirm password doesn't match"
-    //   );
-    //   setLoading(false);
-    // }
-  };
+  }
 
   return (
     <div className="signup-container w-full h-[100vh] flex justify-center items-center bg-[#f1f3f6]">
-      <div className="flex-1 w-full h-full flex justify-center items-center relative overflow-hidden">
+      <div className=" w-[70%] h-full flex justify-center items-center relative overflow-hidden">
         <img
           alt=""
           src={signup}
-          className="fixed top-1/2 transform -translate-y-1/2 h-80vh"
+          className="w-full object-contain h-[70%]"
         />
       </div>
 
-      <div className="signup-right shadow-left xl:shadow-right-24 flex flex-col bg-[#f1f3f6] justify-center px-10 py-4 w-[500px] h-[100%] gap-10">
+      <div className="signup-right shadow-left xl:shadow-right-24 flex flex-col bg-white justify-center px-10 py-4 w-[30%] h-[100%] gap-10">
         <div className="signup-logo flex flex-col justify-center items-center">
           <img alt="" src={logo} width="50px" />
           <h1 className="text-3xl font-bold">YoungStorage</h1>
           <h4 className="text-[#555]">Create New Account</h4>
         </div>
-        <form onSubmit={handleSubmit(onSubmit)} noValidate>
-          <div className="sign mt-8">
-            <div className="right-comp flex flex-col gap-2">
-              <label htmlFor="email" className="capitalize">
-                email:
-              </label>
-              <div className="icons flex justify-center items-center">
-                <input
-                  className="border-none  outline-none px-2 py-4 bg-transparent w-full h-10 text-input cursor-pointer transition duration-300 border-b border-light hover:border-gray-400 focus:border-gray-600"
-                  type="email"
-                  placeholder="Email"
-                  id="email"
-                  required
-                  {...register("email", {
-                    required: "email required",
-                    pattern: {
-                      value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/i,
-                      message: "invalid email format",
-                    },
-                  })}
-                />
-                <span className="flex items-center justify-center p-2 rounded-md">
-                  <FaRegMessage />
-                </span>
-              </div>
-              <p style={{ color: "red" }}>{errors.email?.message}</p>
+        <form onSubmit={handleSubmit}>
+          <div className="">
+            <div className="flex flex-col gap-4">
+
+            <label htmlFor="" className="text-xl">UserName</label>
+              <IconField iconPosition="left" className="w-full">
+                <InputIcon className="pi pi-phone"> </InputIcon>
+                <InputText v-model="value1" id="UserName" value={UserName} onChange={(e) => setUserName(e.target.value)} placeholder="Phone Number" className="w-full " />
+              </IconField>
+              {errors.UserName && <span className="text-red-500">{errors.UserName}</span>}
+
+
+              <label htmlFor="" className="text-xl ">Email</label>
+              <IconField iconPosition="left" className="w-full ">
+                <InputIcon className="pi pi-envelope "> </InputIcon>
+                <InputText v-model="value1" id="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email" className="w-full" />
+              </IconField>
+              {errors.email && <span className="text-red-500">{errors.email}</span>}
+
+
+              <label htmlFor="" className="text-xl">Password</label>
+              <IconField iconPosition="left" className="w-full">
+                <InputIcon className="pi pi-lock"> </InputIcon>
+                <InputText v-model="value1" id="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password" className="w-full " />
+              </IconField>
+              {errors.password && <span className="text-red-500">{errors.password}</span>}
+
+
+
+              <label htmlFor="" className="text-xl">Confirm Password</label>
+              <IconField iconPosition="left" className="w-full ">
+                <InputIcon className="pi pi-lock"> </InputIcon>
+                <InputText v-model="value1" id="ConfirmPassword" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} placeholder="Confirm Password " className="w-full " />
+              </IconField>
+              {errors.confirmPassword && <span className="text-red-500">{errors.confirmPassword}</span>}
+
+
+
+            
+
+            </div>
+            <div className="">
+              {/* <Link to="/auth/sigin" className="w-full flex justify-center items-center mt-12">
+                <Button label="Signup" className="w-full  " />
+              </Link> */}
             </div>
 
-            <div className="right-comp flex flex-col gap-2">
-              <label>password:</label>
-              <div className="icons flex justify-center items-center">
-                <Controller
-                  name="password"
-                  control={control}
-                  render={({ field }) => (
-                    <input
-                      className="border-none  outline-none px-2 py-4 bg-transparent w-full h-10 text-input cursor-pointer transition duration-300 border-b border-light hover:border-gray-400 focus:border-gray-600"
-                      {...field}
-                      type={showPassword ? "text" : "password"}
-                      placeholder="Password"
-                    />
-                  )}
-                  rules={{
-                    required: "password required",
-                    minLength: {
-                      value: 8,
-                      message: "Password must be at least 8 characters long",
-                    },
-                    pattern: {
-                      value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)/,
-                      message:
-                        "Password must contain at least one uppercase letter, one lowercase letter, and one digit",
-                    },
-                  }}
-                />
-                <span onClick={togglePasswordVisibility}>
-                  <img
-                    src={showPassword ? shared : hide}
-                    width={15}
-                    height={15}
-                  />
-                </span>
-
-                <span className="flex items-center justify-center p-2 rounded-md">
-                  <FaRegMessage />
-                </span>
-              </div>
-              {errors.password && (
-                <p style={{ color: "red" }}>{errors.password.message}</p>
-              )}
-            </div>
-
-            <div className="right-comp flex flex-col gap-2">
-              <label>confirm Password:</label>
-              <div className="icons flex justify-center items-center">
-                <Controller
-                  name="confirmpassword"
-                  control={control}
-                  render={({ field }) => (
-                    <input
-                      className="border-none outline-none px-2 py-4 bg-transparent w-full h-10 text-input cursor-pointer transition duration-300 border-b border-light hover:border-gray-400 focus:border-gray-600"
-                      {...field}
-                      type={match ? "text" : "password"}
-                      placeholder="confirm password"
-                    />
-                  )}
-                  rules={{
-                    required: "Please confirm your password",
-                  }}
-                />
-                <span onClick={Visible}>
-                  <img src={match ? shared : hide} width={15} height={15} />
-                </span>
-                <span className="flex items-center justify-center p-2 rounded-md">
-                  <FaRegMessage />
-                </span>
-              </div>
-              {errors.confirmpassword && (
-                <p style={{ color: "red" }}>{errors.confirmpassword.message}</p>
-              )}
-            </div>
-
-            <div className="right-comp flex flex-col gap-2">
-              <label>Phone Number:</label>
-              <div className="icons flex justify-center items-center">
-                <Controller
-                  name="phone"
-                  control={control}
-                  defaultValue=""
-                  render={({ field }) => (
-                    <input
-                      className="border-none outline-none px-2 py-4 bg-transparent w-full h-10 text-input cursor-pointer transition duration-300 border-b border-light hover:border-gray-400 focus:border-gray-600"
-                      {...field}
-                      type="number"
-                      placeholder="Phone Number"
-                    />
-                  )}
-                  rules={{
-                    required: "phoneNumber required",
-                    minLength: {
-                      value: 10,
-                      message: "Phone number must be at least 10 digits",
-                    },
-                    maxLength: {
-                      value: 12,
-                      message: "Phone number must be at most 12 digits",
-                    },
-                    pattern: {
-                      value: /^[0-9]+$/,
-                      message: "Phone number must contain only digits",
-                    },
-                  }}
-                />
-                <span className="flex items-center justify-center p-2 rounded-md">
-                  <FaRegMessage />
-                </span>
-              </div>
-              {errors.phoneNumber && (
-                <p style={{ color: "red" }}>{errors.phoneNumber}</p>
-              )}
-            </div>
-            <button className="btn btn mt-[50px] w-full py-2 px-0 rounded-lg bg-blue-600 text-white shadow-md transition duration-300 ease-in-out flex justify-center items-center">
-              {loading ? <LoadingBar /> : "Sign up"}
-            </button>
-
-            <div className="line relative mt-[30px]">
+            <div className=" relative mt-[30px]">
               <hr />
-              <span className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 py-0 px-6 bg-gray-100 h-auto text-gray-800">
+              <span className="absolute top-1/2 left-1/2 transform -translate-x-1/3 -translate-y-1/2 py-0 px-6 bg-gray-100 h-auto text-gray-800">
                 or
               </span>
             </div>
 
-            <div className="btn1 mt-[30px] w-full py-2 px-0 rounded-lg bg-[#fd7401] text-white shadow-md transition duration-300 ease-in-out flex justify-center items-center">
-              {/* <Link href="/auth/signin">Sign In</Link> */}
-              <button>submit</button>
+            <div className=" w-full flex justify-center items-center mt-4">
+              {/* <Button label="Signin" className="w-full "/> */}
+              <Button label="Warning" severity="secondary" className="w-full " />
             </div>
           </div>
         </form>

@@ -16,7 +16,7 @@ import LabUbuntu from './pages/LabUbuntu.tsx';
 import SignUp from './auth/SignUp.tsx';
 import SignIn from './auth/SignIn.tsx';
 import SideBar from './components/SideBar.tsx';
-
+import { PrimeReactProvider } from 'primereact/api';
 const MainLayout = () => (
   <div className='flex'>
     <SideBar />
@@ -82,6 +82,8 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <PrimeReactProvider>
+      <RouterProvider router={router} />
+    </PrimeReactProvider>
   </React.StrictMode>,
 );

@@ -6,7 +6,7 @@ import { FaCopy, FaPlay } from "react-icons/fa";
 import Copy from "../components/Copy";
 import { BiSolidUpArrow } from "react-icons/bi";
 import LineChart from "../components/LineChart";
-import Line from "../components/Line";
+// import Line from "../components/Line";
 
 function LabUbuntu() {
   const pageTitle = "Labs/ubuntu";
@@ -151,7 +151,7 @@ function LabUbuntu() {
 
 
       <LineChart />
-      <Line />
+      {/* <Line /> */}
     </div>
   );
 }

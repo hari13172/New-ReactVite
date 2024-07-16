@@ -1,17 +1,13 @@
-/* src/index.css */
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@layer tailwind-base, primereact, tailwind-utilities;
 
-/* * {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
-  font-family: "Poppins", sans-serif;
+/* IMPORTANT: In "styled" mode you must add the PrimeReact Theme here. Do NOT include in "unstyled" mode */
+@import 'primereact/resources/themes/lara-light-blue/theme.css' layer(primereact);
+
+@layer tailwind-base {
+  @tailwind base;
 }
 
-body {
-  max-width: 1980px;
-  margin: 0 auto;
-  width: 100%;
-} */
+@layer tailwind-utilities {
+  @tailwind components;
+  @tailwind utilities;
+}
