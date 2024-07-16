@@ -1,85 +1,17 @@
-"use client";
 
-// import { API } from "@/api/api";
-// import LoadingBar from "@/components/loadingEffect";
-// import { useRouter } from "next/navigation";
+
 import { useState } from "react";
-import { useForm, Controller, SubmitHandler } from "react-hook-form";
-// import "@/styles/auth/signin.scss";
-// import { Toast } from "../components/Alert";
 import logo from "../../public/images/logo.png";
 import mobile from "../../public/images/Mobile.png"
-
 import { IconField } from 'primereact/iconfield';
 import { InputIcon } from 'primereact/inputicon';
 import { Button } from 'primereact/button';
-
 import 'primeicons/primeicons.css';
-
-
-
 import { InputText } from "primereact/inputtext";
 
-import { FloatLabel } from 'primereact/floatlabel';
 
-interface SignUpForm {
-  email: string;
-  password: string;
-  confirmpassword: string;
-  phone: string;
-}
 
 function SignUp() {
-  const [showPassword, setShowPassword] = useState(false);
-  const [match, setMatch] = useState(false);
-  const [value, setValue] = useState<string>('');
-
-  //   const router = useRouter();
-
-  const togglePasswordVisibility = () => {
-    setShowPassword((prevShowPassword) => !prevShowPassword);
-  };
-
-  const visible = () => {
-    setMatch((prevMatch) => !prevMatch);
-  };
-
-  const { register, control, handleSubmit, formState } = useForm<SignUpForm>();
-  const { errors } = formState;
-  const [loading, setLoading] = useState(false);
-
-  const onSubmit: SubmitHandler<SignUpForm> = async (data) => {
-    setLoading(true);
-    // if (data.password === data.confirmpassword) {
-    //   const signupData = await API.signup(data).catch((err) => {
-    //     Toast.error(
-    //       err?.data?.message
-    //         ? err?.data?.message
-    //         : err?.data?.detail?.length
-    //         ? err?.data?.detail[0]?.msg
-    //         : err?.data?.detail
-    //     );
-    //     setLoading(false);
-    //   });
-    //   setLoading(false);
-    //   if (signupData?.data) {
-    //     let signdata = signupData?.data;
-    //     if (signdata?.status) {
-    //       Toast.success(signdata?.message);
-    //       setTimeout(() => {
-    //         router.push(`/auth/verify?email=${data?.email}`);
-    //       }, 2000);
-    //     } else {
-    //       Toast.error(signdata?.message);
-    //     }
-    //   }
-    // } else {
-    //   Toast.error(
-    //     "please check the password and confirm password doesn't match"
-    //   );
-    //   setLoading(false);
-    // }
-  };
 
   return (
     <div className="signup-container w-full h-[100vh] flex justify-center items-center bg-[#f1f3f6]">
@@ -91,7 +23,7 @@ function SignUp() {
           <h1 className="text-3xl font-bold">YoungStorage</h1>
           <h4 className="text-[#555]">Create New Account</h4>
         </div>
-        <form onSubmit={handleSubmit(onSubmit)} noValidate className="">
+        <form>
           <div className="">
             <div className="flex flex-col gap-4">
               <label htmlFor="" className="text-xl ">Email</label>
