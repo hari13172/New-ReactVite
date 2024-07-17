@@ -16,6 +16,7 @@ import { Toast } from 'primereact/toast';
 import axios from "axios";
 import { api } from '../api/routes'
 
+// Validation Regex
 const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
 const usernameRegex = /^[a-zA-Z][a-zA-Z0-9_-]{2,15}$/;
@@ -28,21 +29,24 @@ function SignUp() {
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [errors, setErrors] = useState({ email: '', password: '', confirmPassword: '', UserName: '' });
+  const [loading, setLoading] = useState(false);
   const toast = useRef<Toast>(null);
 
+
+//  ReactPrime toast show
   const show = (severity:string, summary:string, detail:string) => {
     toast.current?.show({ severity, summary, detail });
   };
 
-  const [loading, setLoading] = useState(false);
 
 
 
+  // Form handleSubmiter
   const handleSubmit = async (e: React.FormEvent) => {
-
     e.preventDefault();
     setLoading(true)
 
+    // validation checker
     const validationErrors = {
       UserName: usernameRegex.test(UserName) ? "" : "Invalid user Format",
       email: emailRegex.test(email) ? "" : "Invalid email Format",
@@ -52,6 +56,8 @@ function SignUp() {
     setErrors(validationErrors);
     const isValid = Object.values(validationErrors).every(error => error === '');
 
+
+    // API Connection using axios
     if (isValid) {
       try {
         const { data, status, statusText } = await axios.post(api.signup, {
@@ -80,11 +86,8 @@ function SignUp() {
         }
         console.log("Error Config:", error.config);
       }
-
-
     }
     setLoading(false)
-
   }
 
   return (
@@ -144,7 +147,7 @@ function SignUp() {
               {errors.confirmPassword && <span className="text-red-500">{errors.confirmPassword}</span>}
             </div>
             <div className="w-full flex justify-center items-center mt-8">
-              <Button label="Submit" icon="pi pi-check" loading={loading} className=" w-full flex justify-center items-center" pt={{
+              <Button label="Sign Up" icon="pi pi-check" loading={loading} className=" w-full flex justify-center items-center" pt={{
                 icon() {
                   return " "
                 },

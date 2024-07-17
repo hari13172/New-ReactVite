@@ -12,27 +12,25 @@ import axios from "axios";
 import { api } from '../api/routes'
 import { Toast } from 'primereact/toast';
 
-
-
-const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
-
-
 function Signin() {
 
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const [errors, setErrors] = useState({ email: '', password: '',});
+  const [errors, setErrors] = useState({ email: '', password: '', });
+  const [loading, setLoading] = useState(false);
   const toast = useRef<Toast>(null);
 
 
-  const show = (severity:string, summary:string, detail:string) => {
+  // ReactPrime Toast show
+  const show = (severity: string, summary: string, detail: string) => {
     toast.current?.show({ severity, summary, detail });
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setLoading(true)
 
+    // API connection 
     if (username && password) {
       try {
         const { data, status, statusText } = await axios.post(api.signin, {
@@ -40,7 +38,7 @@ function Signin() {
           password,
         });
         console.log("Data:", data.message);
-        show("success", "Success",data.message)
+        show("success", "Success", data.message)
         console.log("Status:", status);
         console.log("Status Text:", statusText);
         // Handle successful signin (e.g., redirect, show success message)
@@ -62,11 +60,11 @@ function Signin() {
         console.log("Error Config:", error.config);
       }
     }
-
+    setLoading(false)
   }
   return (
     <div className="signup-container w-full h-[100vh] flex justify-center items-center bg-[#f1f3f6]">
-      
+
 
       <div className="signup-right shadow-left xl:shadow-right-24 flex flex-col bg-white justify-center px-10 py-4 w-[30%] h-[100%] gap-10">
         <div className="signup-logo flex flex-col justify-center items-center">
@@ -77,14 +75,14 @@ function Signin() {
 
         <Toast ref={toast} />
 
-        
+
         <form onSubmit={handleSubmit}>
           <div className="">
             <div className="flex flex-col gap-2">
               <label htmlFor="" className="text-lg ">Email</label>
               <IconField iconPosition="left" className="w-full ">
                 <InputIcon className="pi pi-envelope "> </InputIcon>
-                <InputText v-model="value1" placeholder="Email or Username" className="w-full " id="email" value={username} onChange={(e) => setUsername(e.target.value)}/>
+                <InputText v-model="value1" placeholder="Email or Username" className="w-full " id="email" value={username} onChange={(e) => setUsername(e.target.value)} />
               </IconField>
 
               {errors.email && <span className="text-red-500">{errors.email}</span>}
@@ -93,14 +91,21 @@ function Signin() {
               <label htmlFor="" className="text-lg">Password</label>
               <IconField iconPosition="left" className="w-full">
                 <InputIcon className="pi pi-lock"> </InputIcon>
-                <InputText v-model="value1" placeholder="Password" className="w-full" id="password" value={password} onChange={(e) => setPassword(e.target.value)}/>
+                <InputText v-model="value1" placeholder="Password" className="w-full" id="password" value={password} onChange={(e) => setPassword(e.target.value)} />
               </IconField>
               {errors.password && <span className="text-red-500">{errors.password}</span>}
 
 
             </div>
-            <div className=" w-full  flex justify-center items-center mt-8">
-              <Button label="Signup" className="w-full  " />
+            <div className="w-full flex justify-center items-center mt-8">
+              <Button label="Sign In" icon="pi pi-check" loading={loading} className=" w-full flex justify-center items-center" pt={{
+                icon() {
+                  return " "
+                },
+                label() {
+                  return " flex-grow-0 "
+                }
+              }} />
             </div>
 
             <div className=" relative mt-[30px]">
