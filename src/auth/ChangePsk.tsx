@@ -8,17 +8,20 @@ import { InputIcon } from 'primereact/inputicon';
 import { Button } from 'primereact/button';
 import 'primeicons/primeicons.css';
 import { InputText } from "primereact/inputtext";
-import { Toast } from 'primereact/toast';
 import axios from "axios";
 import { api } from '../api/routes'
+import { Toast } from 'primereact/toast';
 
-const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
 
 
-function Forget() {
 
-    const [email, setEmail] = useState('');
-    const [errors, setErrors] = useState({ email: '', });
+function Changepsk() {
+
+    const [errors, setErrors] = useState({ password: '',});
+    const [password, setPassword] = useState()
+    const [newpassword, setNewPassword] = useState()
     const [loading, setLoading] = useState(false);
     const toast = useRef<Toast>(null);
 
@@ -32,7 +35,8 @@ function Forget() {
         e.preventDefault();
         setLoading(true)   
         const validationErrors = {
-            email: emailRegex.test(email) ? "" : "Invalid email Format",
+            password: passwordRegex.test(password) ? "" : "Invalid email Format",
+            newpassword: password === newpassword ? "" : "password incorrect"
         }
         setErrors(validationErrors);
         const isValid = Object.values(validationErrors).every(error => error === '');
@@ -41,7 +45,7 @@ function Forget() {
     if (isValid) {
         try {
           const { data, status, statusText } = await axios.post(api.signup, {
-           email
+           password
           });
           console.log("Data:", data.message);
           show("success", "Success", data.message)
@@ -80,13 +84,19 @@ function Forget() {
                 <form onSubmit={handleSubmit}>
                     <div className="">
                         <div className="flex flex-col gap-2">
-                            <label htmlFor="" className="text-lg ">Email Address</label>
+                            <label htmlFor="" className="text-lg ">new Password</label>
                             <IconField iconPosition="left" className="w-full ">
                                 <InputIcon className="pi pi-envelope "> </InputIcon>
-                                <InputText v-model="value1" placeholder="Email" className="w-full " id="email" value={email} onChange={(e:any) => setEmail(e.target.value)} />
+                                <InputText v-model="value1" placeholder="password" className="w-full " id="password" value={password} onChange={(e:any) => setPassword(e.target.value)} />
                             </IconField>
+                            {errors.password && <span className="text-red-500">{errors.password}</span>}
 
-                            {errors.email && <span className="text-red-500">{errors.email}</span>}
+
+                            <label htmlFor="" className="text-lg ">Confirm Password</label>
+                            <IconField iconPosition="left" className="w-full ">
+                                <InputIcon className="pi pi-lock "> </InputIcon>
+                                <InputText v-model="value1" placeholder="newpassword" className="w-full " id="newpassword" value={newpassword} onChange={(e:any) => setNewPassword(e.target.value)} />
+                            </IconField>
                         </div>
                         <div className=" w-full  flex justify-center items-center mt-8">
                             <Button label="Verify" className="w-full  " />
@@ -119,4 +129,4 @@ function Forget() {
     );
 }
 
-export default Forget;
+export default Changepsk;

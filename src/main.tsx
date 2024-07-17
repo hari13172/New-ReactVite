@@ -18,6 +18,7 @@ import SignIn from './auth/SignIn.tsx';
 import SideBar from './components/SideBar.tsx';
 import { PrimeReactProvider } from 'primereact/api';
 import Forget from './auth/Forget.tsx';
+import Changepsk from './auth/ChangePsk.tsx';
 
 
 const MainLayout = () => (
@@ -82,6 +83,10 @@ const router = createBrowserRouter([
       {
         path: "forget",
         element: <Forget />,
+      },
+      {
+        path: "changepsk",
+        element: <Changepsk />,
       },
     ],
   },
