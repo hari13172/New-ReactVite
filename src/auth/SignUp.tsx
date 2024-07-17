@@ -65,9 +65,9 @@ function SignUp() {
         </div>
         <form onSubmit={handleSubmit}>
           <div className="">
-            <div className="flex flex-col gap-4">
+            <div className="flex flex-col gap-2">
 
-            <label htmlFor="" className="text-xl">UserName</label>
+            <label htmlFor="" className="text-lg">UserName</label>
               <IconField iconPosition="left" className="w-full">
                 <InputIcon className="pi pi-phone"> </InputIcon>
                 <InputText v-model="value1" id="UserName" value={UserName} onChange={(e) => setUserName(e.target.value)} placeholder="Phone Number" className="w-full " />
@@ -75,7 +75,7 @@ function SignUp() {
               {errors.UserName && <span className="text-red-500">{errors.UserName}</span>}
 
 
-              <label htmlFor="" className="text-xl ">Email</label>
+              <label htmlFor="" className="text-lg ">Email</label>
               <IconField iconPosition="left" className="w-full ">
                 <InputIcon className="pi pi-envelope "> </InputIcon>
                 <InputText v-model="value1" id="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email" className="w-full" />
@@ -83,7 +83,7 @@ function SignUp() {
               {errors.email && <span className="text-red-500">{errors.email}</span>}
 
 
-              <label htmlFor="" className="text-xl">Password</label>
+              <label htmlFor="" className="text-lg">Password</label>
               <IconField iconPosition="left" className="w-full">
                 <InputIcon className="pi pi-lock"> </InputIcon>
                 <InputText v-model="value1" id="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password" className="w-full " />
@@ -92,7 +92,7 @@ function SignUp() {
 
 
 
-              <label htmlFor="" className="text-xl">Confirm Password</label>
+              <label htmlFor="" className="text-lg">Confirm Password</label>
               <IconField iconPosition="left" className="w-full ">
                 <InputIcon className="pi pi-lock"> </InputIcon>
                 <InputText v-model="value1" id="ConfirmPassword" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} placeholder="Confirm Password " className="w-full " />
@@ -105,9 +105,9 @@ function SignUp() {
 
             </div>
             <div className="">
-              {/* <Link to="/auth/sigin" className="w-full flex justify-center items-center mt-12">
+              <Link to="" className="w-full flex justify-center items-center mt-12">
                 <Button label="Signup" className="w-full  " />
-              </Link> */}
+              </Link>
             </div>
 
             <div className=" relative mt-[30px]">

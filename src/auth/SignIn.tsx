@@ -10,9 +10,31 @@ import 'primeicons/primeicons.css';
 import { InputText } from "primereact/inputtext";
 
 
+const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+
 
 function SignUp() {
 
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [errors, setErrors] = useState({ email: '', password: '',});
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    const validationErrors = {
+      email: emailRegex.test(email) ? "" : "Invalid email Format",
+      password: passwordRegex.test(password) ? "" : "Password Incorrect",
+    }
+    setErrors(validationErrors);
+    const isValid = Object.values(validationErrors).every(error => error === '');
+
+    if (isValid) {
+      // Handle form submission
+      console.log({ email, password });
+    }
+
+  }
   return (
     <div className="signup-container w-full h-[100vh] flex justify-center items-center bg-[#f1f3f6]">
       
@@ -23,24 +45,28 @@ function SignUp() {
           <h1 className="text-3xl font-bold">YoungStorage</h1>
           <h4 className="text-[#555]">Create New Account</h4>
         </div>
-        <form>
+        <form onSubmit={handleSubmit}>
           <div className="">
-            <div className="flex flex-col gap-4">
-              <label htmlFor="" className="text-xl ">Email</label>
+            <div className="flex flex-col gap-2">
+              <label htmlFor="" className="text-lg ">Email</label>
               <IconField iconPosition="left" className="w-full ">
                 <InputIcon className="pi pi-envelope "> </InputIcon>
-                <InputText v-model="value1" placeholder="Email" className="w-full " />
+                <InputText v-model="value1" placeholder="Email" className="w-full " id="email" value={email} onChange={(e) => setEmail(e.target.value)}/>
               </IconField>
 
+              {errors.email && <span className="text-red-500">{errors.email}</span>}
 
-              <label htmlFor="" className="text-xl">Password</label>
+
+              <label htmlFor="" className="text-lg">Password</label>
               <IconField iconPosition="left" className="w-full">
                 <InputIcon className="pi pi-lock"> </InputIcon>
-                <InputText v-model="value1" placeholder="Password" className="w-full " />
+                <InputText v-model="value1" placeholder="Password" className="w-full" id="password" value={password} onChange={(e) => setPassword(e.target.value)}/>
               </IconField>
+              {errors.password && <span className="text-red-500">{errors.password}</span>}
+
 
             </div>
-            <div className=" w-full  flex justify-center items-center mt-12">
+            <div className=" w-full  flex justify-center items-center mt-8">
               <Button label="Signup" className="w-full  " />
             </div>
 
