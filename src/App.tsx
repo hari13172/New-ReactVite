@@ -11,22 +11,24 @@ import "./App.css";
 // import 'primeflex/primeflex.css';  
 import 'primereact/resources/primereact.css';
 import 'primereact/resources/themes/lara-light-indigo/theme.css';
+import 'primeicons/primeicons.css';
 function App() {
   return (
-    // <Router>
-    //   <div className="flex">
-    //     <SideBar />
-    //     <Routes>
-    //       <Route path="/" element={<Home />} />
-    //       <Route path="/network" element={<Network />} />
-    //       <Route path="/Labs" element={<Labs />} />
-    //       <Route path="/service" element={<Service />} />
-    //       <Route path="/domains" element={<Domain />} />
-    //       <Route path="/labs/ubuntu" element={<LabUbuntu />} />
+
+  );
+  // <Router>
+  //   <div className="flex">
+  //     <SideBar />
+  //     <Routes>
+  //       <Route path="/" element={<Home />} />
+  //       <Route path="/network" element={<Network />} />
+  //       <Route path="/Labs" element={<Labs />} />
+  //       <Route path="/service" element={<Service />} />
+  //       <Route path="/domains" element={<Domain />} />
+  //       <Route path="/labs/ubuntu" element={<LabUbuntu />} />
     //     </Routes>
     //   </div>
     // </Router>
-  );
 }
 
 export default App;
