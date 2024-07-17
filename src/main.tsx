@@ -17,6 +17,9 @@ import SignUp from './auth/SignUp.tsx';
 import SignIn from './auth/SignIn.tsx';
 import SideBar from './components/SideBar.tsx';
 import { PrimeReactProvider } from 'primereact/api';
+import Forget from './auth/Forget.tsx';
+
+
 const MainLayout = () => (
   <div className='flex'>
     <SideBar />
@@ -75,6 +78,10 @@ const router = createBrowserRouter([
       {
         path: "signin",
         element: <SignIn />,
+      },
+      {
+        path: "forget",
+        element: <Forget />,
       },
     ],
   },
