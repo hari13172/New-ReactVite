@@ -26,7 +26,7 @@ function LabUbuntu() {
             <div className="flex justify-between items-center gap-2">
               <Badge value="notrunning" color="orange" />
               <Badge value="offline" color="red" />
-              <Badge value="online" color="green"/>
+              <Badge value="online" color="green" />
             </div>
           </div>
         </div>

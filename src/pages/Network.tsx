@@ -6,13 +6,13 @@ import qr from "../../public/images/qr.png";
 import info from "../../public/images/information.png";
 import DropDown from "../components/DropDown";
 import { TbCloudNetwork } from "react-icons/tb";
-import { RiDeleteBinLine } from "react-icons/ri";
+import Card from '../components/Card'
 // import  { useRef } from 'react';
 // import { Button } from 'primereact/button';
 // import { Toast } from 'primereact/toast';
 
 
-        
+
 
 function Network() {
   const pageTitle = "Network";
@@ -94,7 +94,9 @@ function Network() {
         </div>
         <div className=" border-gray-600 w-full"></div>
 
-        <div className="device-list w-full mt-6 flex flex-wrap justify-center gap-8 ">
+
+        <Card />
+        {/* <div className="device-list w-full mt-6 flex flex-wrap justify-center gap-8 ">
           <div className="device-box flex flex-col w-full md:w-3/4 lg:w-1/2 xl:w-1/3 rounded-lg p-6 border border-gray-200 bg-blue-300 bg-opacity-50 shadow-md gap-4">
             <div className="flex items-center gap-4">
               <h3 className="text-xl font-semibold">Ubuntu Labs</h3>
@@ -134,24 +136,14 @@ function Network() {
               </div>
 
               <div className="flex justify-center items-center cursor-pointer">
-              <RiDeleteBinLine className="w-[25px] h-[25px]"/>
+                <RiDeleteBinLine className="w-[25px] h-[25px]" />
                 <span className="text-center items-center justify-center m-1 capitalize">
                   Delete
                 </span>
               </div>
-               {/* <div className="card flex justify-content-center">
-            <Toast ref={toast} />
-            <div className="flex flex-wrap gap-2">
-                <Button label="Success" severity="success" onClick={showSuccess} />
-                <Button label="Info" severity="info" onClick={showInfo} />
-                <Button label="Warn" severity="warning" onClick={showWarn} />
-                <Button label="Error" severity="danger" onClick={showError} />
-                <Button label="Secondary" severity="secondary" onClick={showSecondary} />
-            </div>
-        </div> */}
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
       {/* Modal */}
 
