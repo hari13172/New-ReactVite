@@ -1,58 +1,114 @@
-import * as React from 'react';
-import { ChartContainer, ChartContainerProps } from '@mui/x-charts/ChartContainer';
+import React from 'react';
 import {
-    LinePlot,
-    MarkPlot,
-    lineElementClasses,
-    markElementClasses,
-} from '@mui/x-charts/LineChart';
+    Card,
+    CardBody,
+    CardHeader,
+    Typography,
+} from "@material-tailwind/react";
+import Chart from "react-apexcharts";
 
-const pData: number[] = [10, 65, 60, 39, 48, 38, 100];
-const xLabels: string[] = [
-    'Page A',
-    'Page B',
-    'Page C',
-    'Page D',
-    'Page E',
-    'Page F',
-    'Page G',
-];
+const chartConfig = {
+    type: "line",
+    width: 200,
+    height: 240,
+    series: [
+        {
+            name: "",
+            data: [300, 300, 300, 300, 300, 300, 300],
+        },
+    ],
+    options: {
+        chart: {
+            toolbar: {
+                show: false,
+            },
+        },
+        title: {
+            show: "",
+        },
+        dataLabels: {
+            enabled: false,
+        },
+        colors: ["#020617"],
+        stroke: {
+            lineCap: "",
+            curve: "smooth",
+        },
+        markers: {
+            size: 0,
+        },
+        xaxis: {
+            axisTicks: {
+                show: false,
+            },
+            axisBorder: {
+                show: false,
+            },
+            labels: {
+                show: false,
+                style: {
+                    colors: "#616161",
+                    fontSize: "12px",
+                    fontFamily: "",
+                    fontWeight: 400,
+                },
+            },
+            // categories: [
+            //     "Apr",
+            //     "May",
+            //     "Jun",
+            //     "Jul",
+            //     "Aug",
+            //     "Sep",
+            //     "Oct",
+            //     "Nov",
+            //     "Dec",
+            // ],
+        },
 
-const TinyLineChart: React.FC = () => {
-    const handleLineClick: ChartContainerProps['onClick'] = (event, series, index) => {
-        // Log the clicked data point to the console
-        console.log(`Clicked on ${xLabels[index]}: ${series.data[index]}`);
-    };
 
-    return (
-        <>
-            <div className='border-2 w-fit mt-4 text-center'>
-                <ChartContainer
-                    width={220}
-                    height={150}
-                    series={[{ type: 'line', data: pData }]}
-                    xAxis={[{ scaleType: 'point', data: xLabels }]}
-                    sx={{
-                        [`& .${lineElementClasses.root}`]: {
-                            stroke: '#8884d8',
-                            strokeWidth: 3,
-                        },
-                        [`& .${markElementClasses.root}`]: {
-                            stroke: '#8884d8',
-                            scale: '0',
-                            fill: '',
-                            strokeWidth: 0,
-                        },
-                    }}
-                    disableAxisListener
-                    onClick={handleLineClick}
-                >
-                    <LinePlot />
-                    <MarkPlot />
-                </ChartContainer>
-            </div>
-        </>
-    );
+        yaxis: {
+            labels: {
+                show: false,
+                style: {
+                    colors: "#616161",
+                    fontSize: "12px",
+                    fontFamily: "inherit",
+                    fontWeight: 400,
+                },
+            },
+        },
+
+
+        grid: {
+            show: false,
+            borderColor: "",
+            strokeDashArray: 5,
+            xaxis: {
+                lines: {
+                    show: true,
+                },
+            },
+            // padding: {
+            //     top: 5,
+            //     right: 20,
+            // },
+        },
+        fill: {
+            opacity: 0.8,
+        },
+        tooltip: {
+            theme: "dark",
+        },
+    },
 };
 
-export default TinyLineChart;
+export default function Example() {
+    return (
+        <Card className='bg-transparent w-0'>
+            <CardBody className="">
+                <Chart {...chartConfig} />
+            </CardBody>
+        </Card>
+    );
+}
