@@ -10,7 +10,7 @@ import Chart from "react-apexcharts";
 const chartConfig = {
     type: "line",
     width: 200,
-    height: 240,
+    height: 100,
     series: [
         {
             name: "",
@@ -105,7 +105,7 @@ const chartConfig = {
 
 export default function Example() {
     return (
-        <Card className='bg-transparent w-0'>
+        <Card className='bg-transparent w-0 '>
             <CardBody className="">
                 <Chart {...chartConfig} />
             </CardBody>
