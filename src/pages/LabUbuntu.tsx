@@ -5,9 +5,11 @@ import pro from "../../public/images/pro.png";
 import { FaCopy, FaPlay } from "react-icons/fa";
 import Copy from "../components/Copy";
 import { BiSolidUpArrow } from "react-icons/bi";
-import LineChart from "../components/LineChart";
+// import LineChart from "../components/LineChart";
 import { useState } from "react";
 // import Line from "../components/Line";
+import { Button } from 'primereact/button';
+import { button } from "@material-tailwind/react";
 
 function LabUbuntu() {
   const pageTitle = "Labs/ubuntu";
@@ -15,6 +17,7 @@ function LabUbuntu() {
   const [terminalstate, SetTerminalState] = useState(false)
   const [showPopup, setShowPopup] = useState(false);
   const [deployed, setDeployed] = useState(false)
+  const [showRedeployPopup, setShowRedeployPopup] = useState(false);
 
   const togglePopup = () => {
     setShowPopup(!showPopup);
@@ -25,9 +28,13 @@ function LabUbuntu() {
     SetTerminalState(!terminalstate)
   }
 
+  const handleReDeploy = () => {
+    setShowRedeployPopup(!showRedeployPopup)
+  }
+
   return (
     <div className="w-full p-8">
-      <span className="flex items-center gap-3 text-[#979797] font-medium">
+      <span className={`flex items-center gap-3 text-[#979797] font-medium ${showPopup ? "filter blur-sm brightness-75" : ""}`}>
         <BreadCrumb title={pageTitle} icon={<SiQwiklabs />} />
       </span>
 
@@ -45,45 +52,69 @@ function LabUbuntu() {
           </div>
         </div>
 
-        {!deployed ? (
-          <div onClick={togglePopup} className="w-fit h-[40px] mt-5 text-center flex px-4 gap-2 items-center bg-green-500">
-            <FaPlay className="text-white text-2xl" />
-            <button className="text-white">Deploy</button>
-          </div>
-        ) : (
-          // <div className="flex gap-4">
-          //   <button className="w-fit h-[40px] mt-5 text-center flex px-4 gap-2 items-center bg-blue-500 text-white">
-          //     Button 1
-          //   </button>
-          //   <button className="w-fit h-[40px] mt-5 text-center flex px-4 gap-2 items-center bg-blue-500 text-white">
-          //     Button 2
-          //   </button>
-          //   <button className="w-fit h-[40px] mt-5 text-center flex px-4 gap-2 items-center bg-blue-500 text-white">
-          //     Button 3
-          //   </button>
-          // </div>
-          ""
-        )}
+        <div>
+          {!deployed ? (
+            <div onClick={togglePopup} className="w-fit h-[40px] mt-5 text-center flex px-4 gap-2 items-center bg-green-500">
+              <FaPlay className="text-white text-2xl" />
+              <button className="text-white">Deploy</button>
+            </div>
+          ) : (
+            <div className="flex justify-center items-center gap-4">
+              <Button label="CODE" icon="pi pi-code" size="small" severity="info" pt={{
+                icon() {
+                  return "text-xl"
+                },
+
+              }} />
+              <Button onClick={handleReDeploy} label="REDEPLOY" icon="pi pi-undo" size="small" severity="secondary" pt={{
+                root() {
+                  return "bg-[#f2c94c]"
+                }
+              }} />
+              <Button label="STOP" icon="pi pi-times-circle" size="small" severity="danger" />
+            </div>
+          )}
+        </div>
       </div>
+
+
+      {showRedeployPopup && (
+        <div className={`fixed inset-0 flex items-start py-10 justify-center z-50 transition-opacity  transform -translate-y-50px animate-action animate-duration-800 backdrop-blur-10"}`}>
+        <div className="border-2 border-[#5458f7] rounded-lg p-8 shadow-lg transform transition-transform duration-300 ease-in-out w-full lg:w-[80%] bg-[#5458f720]">
+          <h2 className="text-2xl font-semibold mb-4">Restart Lab</h2>
+        </div>
+        </div>
+      )}
+
+      {/* {showRedeployPopup && (
+        <div className="fixed inset-0 flex items-start py-10 justify-center z-50 transition-opacity opacity-100">
+          Your code for the Redeploy popup
+        </div>
+      )} */}
+
+
+
       {/* Popup */}
       <div
         className={`fixed inset-0 flex items-start py-10 justify-center z-50 transition-opacity  ${showPopup ? "opacity-100" : "opacity-0 pointer-events-none transform -translate-y-50px animate-action animate-duration-800 backdrop-blur-10"
           }`}
       >
         <div className="border-2 border-[#5458f7] rounded-lg p-8 shadow-lg transform transition-transform duration-300 ease-in-out w-full lg:w-[80%] bg-[#5458f720]">
-          <h2 className="text-xl font-bold mb-4">Deploy Popup</h2>
-          <p className="text-sm text-gray-700">
-            This is the content of your deploy popup. You can customize it as
-            needed.
+          <h2 className="text-2xl font-semibold mb-4">Start Lab</h2>
+          <p className="text-lg text-black">
+            Start Your Lab and Play With Your Coding Space
           </p>
-          <button
-            className="mt-4 px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600"
-            onClick={togglePopup}
-          >
-            Close
-          </button>
+          <div className="flex justify-center items-center gap-4 pt-10">
+            <Button label="START INSTANCE" severity="success" />
+            <Button label="CANCEL" severity="danger" onClick={togglePopup} />
+          </div>
         </div>
       </div>
+
+
+
+
+
 
       <div className="w-full flex p-[20px] px-[38px] justify-between items-start rounded-2xl bg-white gap-[50px] mt-[30px] relative shadow-lg">
         <style>{`
