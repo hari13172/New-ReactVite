@@ -44,17 +44,33 @@ function LabUbuntu() {
             </div>
           </div>
         </div>
-        <div onClick={togglePopup} className="w-fit h-[40px] mt-5 text-center flex px-4 gap-2 items-center bg-green-500">
-          <FaPlay className="text-white text-2xl" />
-          <button className="text-white">Deploy</button>
-        </div>
+
+        {!deployed ? (
+          <div onClick={togglePopup} className="w-fit h-[40px] mt-5 text-center flex px-4 gap-2 items-center bg-green-500">
+            <FaPlay className="text-white text-2xl" />
+            <button className="text-white">Deploy</button>
+          </div>
+        ) : (
+          // <div className="flex gap-4">
+          //   <button className="w-fit h-[40px] mt-5 text-center flex px-4 gap-2 items-center bg-blue-500 text-white">
+          //     Button 1
+          //   </button>
+          //   <button className="w-fit h-[40px] mt-5 text-center flex px-4 gap-2 items-center bg-blue-500 text-white">
+          //     Button 2
+          //   </button>
+          //   <button className="w-fit h-[40px] mt-5 text-center flex px-4 gap-2 items-center bg-blue-500 text-white">
+          //     Button 3
+          //   </button>
+          // </div>
+          ""
+        )}
       </div>
       {/* Popup */}
       <div
-        className={`fixed inset-0 flex items-start py-10 justify-center z-50 transition-opacity  ${showPopup ? "opacity-100" : "opacity-0 pointer-events-none"
+        className={`fixed inset-0 flex items-start py-10 justify-center z-50 transition-opacity  ${showPopup ? "opacity-100" : "opacity-0 pointer-events-none transform -translate-y-50px animate-action animate-duration-800 backdrop-blur-10"
           }`}
       >
-        <div className="bg-white rounded-lg p-8 shadow-lg transform transition-transform duration-300 ease-in-out w-full lg:w-[80%]">
+        <div className="border-2 border-[#5458f7] rounded-lg p-8 shadow-lg transform transition-transform duration-300 ease-in-out w-full lg:w-[80%] bg-[#5458f720]">
           <h2 className="text-xl font-bold mb-4">Deploy Popup</h2>
           <p className="text-sm text-gray-700">
             This is the content of your deploy popup. You can customize it as
@@ -68,10 +84,6 @@ function LabUbuntu() {
           </button>
         </div>
       </div>
-
-
-
-
 
       <div className="w-full flex p-[20px] px-[38px] justify-between items-start rounded-2xl bg-white gap-[50px] mt-[30px] relative shadow-lg">
         <style>{`
