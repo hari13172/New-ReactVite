@@ -6,10 +6,24 @@ import { FaCopy, FaPlay } from "react-icons/fa";
 import Copy from "../components/Copy";
 import { BiSolidUpArrow } from "react-icons/bi";
 import LineChart from "../components/LineChart";
+import { useState } from "react";
 // import Line from "../components/Line";
 
 function LabUbuntu() {
   const pageTitle = "Labs/ubuntu";
+
+  const [terminalstate, SetTerminalState] = useState(false)
+  const [showPopup, setShowPopup] = useState(false);
+  const [deployed, setDeployed] = useState(false)
+
+  const togglePopup = () => {
+    setShowPopup(!showPopup);
+    setDeployed(true)
+  };
+
+  const toggleTerminal = () => {
+    SetTerminalState(!terminalstate)
+  }
 
   return (
     <div className="w-full p-8">
@@ -17,7 +31,7 @@ function LabUbuntu() {
         <BreadCrumb title={pageTitle} icon={<SiQwiklabs />} />
       </span>
 
-      <div className="w-full flex mt-6 justify-between p-6 rounded-2xl bg-white shadow-lg">
+      <div className={`w-full flex mt-6 justify-between p-6 rounded-2xl bg-white shadow-lg ${showPopup ? "filter blur-sm brightness-75" : ""}`}>
         <div className="flex justify-between items-center gap-[30px]">
           <img alt="" src={pro} width="80px" />
           <div className="flex flex-col items-start justify-center gap-2">
@@ -30,11 +44,34 @@ function LabUbuntu() {
             </div>
           </div>
         </div>
-        <div className="w-fit h-[40px] mt-5 text-center flex px-4 gap-2 items-center bg-green-500">
+        <div onClick={togglePopup} className="w-fit h-[40px] mt-5 text-center flex px-4 gap-2 items-center bg-green-500">
           <FaPlay className="text-white text-2xl" />
           <button className="text-white">Deploy</button>
         </div>
       </div>
+      {/* Popup */}
+      <div
+        className={`fixed inset-0 flex items-start py-10 justify-center z-50 transition-opacity  ${showPopup ? "opacity-100" : "opacity-0 pointer-events-none"
+          }`}
+      >
+        <div className="bg-white rounded-lg p-8 shadow-lg transform transition-transform duration-300 ease-in-out w-full lg:w-[80%]">
+          <h2 className="text-xl font-bold mb-4">Deploy Popup</h2>
+          <p className="text-sm text-gray-700">
+            This is the content of your deploy popup. You can customize it as
+            needed.
+          </p>
+          <button
+            className="mt-4 px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600"
+            onClick={togglePopup}
+          >
+            Close
+          </button>
+        </div>
+      </div>
+
+
+
+
 
       <div className="w-full flex p-[20px] px-[38px] justify-between items-start rounded-2xl bg-white gap-[50px] mt-[30px] relative shadow-lg">
         <style>{`
@@ -140,17 +177,21 @@ function LabUbuntu() {
         </div>
       </div>
 
-      {/* <div className="fixed bottom-0 right-0 z-20  lg:w-[calc(100%-90px)] bg-blue-950 rounded-lg shadow-2xl">
+      <div className={`fixed  -right-2 bottom-0  w-[calc(100%-90px)] bg-blue-950 rounded-lg shadow-2xl  ${terminalstate ? "top-[70%]" : "bottom-0"}`}>
         <div className="flex items-center justify-between py-2 px-8 bg-white">
           <h1>Terminal</h1>
-          <BiSolidUpArrow />
+          <BiSolidUpArrow onClick={toggleTerminal} />
         </div>
-      </div> */}
+        <div>
+          {/* <h1>(labs💻️youngstorage)$</h1> */}
+        </div>
+
+      </div>
 
 
 
 
-      <LineChart />
+      {/* <LineChart /> */}
       {/* <Line /> */}
     </div>
   );
