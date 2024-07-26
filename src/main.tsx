@@ -20,6 +20,7 @@ import { PrimeReactProvider } from 'primereact/api';
 import Forget from './auth/Forget.tsx';
 import Changepsk from './auth/ChangePsk.tsx';
 import Verify from './auth/Verify.tsx';
+import DashBoard from './pages/DashBoard.tsx';
 
 
 const MainLayout = () => (
@@ -38,7 +39,7 @@ const AuthLayout = () => (
 const router = createBrowserRouter([
   {
     path: "/",
-    element: "Dashboard"
+    element: <DashBoard />
   },
   {
     element: <MainLayout />,

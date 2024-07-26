@@ -9,7 +9,6 @@ import { BiSolidUpArrow } from "react-icons/bi";
 import { useState } from "react";
 // import Line from "../components/Line";
 import { Button } from 'primereact/button';
-import { button } from "@material-tailwind/react";
 
 function LabUbuntu() {
   const pageTitle = "Labs/ubuntu";
@@ -38,7 +37,7 @@ function LabUbuntu() {
         <BreadCrumb title={pageTitle} icon={<SiQwiklabs />} />
       </span>
 
-      <div className={`w-full flex mt-6 justify-between p-6 rounded-2xl bg-white shadow-lg ${showPopup ? "filter blur-sm brightness-75" : ""}`}>
+      <div className={`w-full flex mt-6 justify-between p-6 rounded-2xl bg-white shadow-lg ${showPopup ? "filter blur-sm brightness-75" : ""} ${showRedeployPopup ? "filter blur-sm brightness-75" : ""}`}>
         <div className="flex justify-between items-center gap-[30px]">
           <img alt="" src={pro} width="80px" />
           <div className="flex flex-col items-start justify-center gap-2">
@@ -80,9 +79,17 @@ function LabUbuntu() {
 
       {showRedeployPopup && (
         <div className={`fixed inset-0 flex items-start py-10 justify-center z-50 transition-opacity  transform -translate-y-50px animate-action animate-duration-800 backdrop-blur-10"}`}>
-        <div className="border-2 border-[#5458f7] rounded-lg p-8 shadow-lg transform transition-transform duration-300 ease-in-out w-full lg:w-[80%] bg-[#5458f720]">
-          <h2 className="text-2xl font-semibold mb-4">Restart Lab</h2>
-        </div>
+          <div className="border-2 border-[#5458f7] rounded-lg p-8 shadow-lg transform transition-transform duration-300 ease-in-out w-full lg:w-[80%] bg-[#5458f720]">
+            <h2 className="text-2xl font-semibold mb-4">Restart Lab</h2>
+            <p className="text-lg text-black">
+              Start Your Lab and Play With Your Coding Space
+            </p>
+            <div className="flex justify-center items-center gap-4 pt-10">
+              <Button label="REDEPLOY INSTANCE" severity="success" size="small" />
+              <Button label="CANCEL" severity="danger" size="small" />
+            </div>
+          </div>
+
         </div>
       )}
 
@@ -105,8 +112,8 @@ function LabUbuntu() {
             Start Your Lab and Play With Your Coding Space
           </p>
           <div className="flex justify-center items-center gap-4 pt-10">
-            <Button label="START INSTANCE" severity="success" />
-            <Button label="CANCEL" severity="danger" onClick={togglePopup} />
+            <Button label="START INSTANCE" severity="success" size="small" />
+            <Button label="CANCEL" severity="danger" onClick={togglePopup} size="small" />
           </div>
         </div>
       </div>
