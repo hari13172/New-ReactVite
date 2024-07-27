@@ -28,16 +28,14 @@ function SideBar() {
   };
 
   return (
-    <div className="relative">
+    <div className="relative lg:block md:block hidden">
       <div
-        className={`bg-[#00171f] h-screen p-5 pt-8 ${
-          open ? "w-55" : "w-24"
-        } duration-300 sticky top-0 left-0 `}
+        className={`bg-[#00171f] h-screen p-5 pt-8 ${open ? "w-55" : "w-24"
+          } duration-300 sticky top-0 left-0 z-50`}
       >
         <MdArrowForwardIos
-          className={`bg-white text-purple-800 text-3xl p-2 rounded-full absolute -right-3 top-[50%] border border-purple-950 cursor-pointer ${
-            !open && "rotate-180"
-          }`}
+          className={`bg-white text-purple-800 text-3xl p-2 rounded-full absolute -right-3 top-[50%] border border-purple-950 cursor-pointer ${!open && "rotate-180"
+            }`}
           onClick={() => setOpen(!open)}
         />
 
@@ -46,14 +44,12 @@ function SideBar() {
           <img
             src={logo}
             alt=""
-            className={`rounded cursor-pointer block float-left mr-3 w-[50px] h-[50px] duration-300 ${
-              !open && "rotate-[360deg]"
-            }`}
+            className={`rounded cursor-pointer block float-left mr-3 w-[50px] h-[50px] duration-300 ${!open && "rotate-[360deg]"
+              }`}
           />
           <h1
-            className={`text-white font-medium origin-left text-2xl duration-300 ${
-              !open && "scale-0"
-            }`}
+            className={`text-white font-medium origin-left text-2xl duration-300 ${!open && "scale-0"
+              }`}
           >
             YoungStorage
           </h1>
@@ -68,29 +64,25 @@ function SideBar() {
             >
               <Link
                 to={menu.path}
-                className={`flex items-center gap-x-2 ${
-                  location.pathname === menu.path ? "" : ""
-                }`}
+                className={`flex items-center gap-x-2 ${location.pathname === menu.path ? "" : ""
+                  }`}
               >
                 <span
-                  className={`text-2xl float-left block p-1 rounded-md ${
-                    location.pathname === menu.path ? "bg-blue-700" : ""
-                  }`}
+                  className={`text-2xl float-left block p-1 rounded-md ${location.pathname === menu.path ? "bg-blue-700" : ""
+                    }`}
                 >
                   {menu.icon ? (
                     menu.icon
                   ) : (
                     <RiDashboardFill
-                      className={`${
-                        location.pathname === menu.path ? "bg-blue-700" : ""
-                      }`}
+                      className={`${location.pathname === menu.path ? "bg-blue-700" : ""
+                        }`}
                     />
                   )}
                 </span>
                 <span
-                  className={`text-lg font-medium flex-1  ${
-                    !open && "hidden"
-                  } ${location.pathname === menu.path ? "text-blue-700" : ""}`}
+                  className={`text-lg font-medium flex-1  ${!open && "hidden"
+                    } ${location.pathname === menu.path ? "text-blue-700" : ""}`}
                 >
                   {menu.title}
                 </span>

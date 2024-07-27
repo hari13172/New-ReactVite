@@ -12,12 +12,9 @@ function DashBoard() {
                 </h1>
                 <div className="end flex justify-center gap-4 items-center">
                     <div>
-                        {/* <Button value="sign in" /> */}
                         <Button label="SIGN IN" size="small" />
                     </div>
-
                     <div>
-                        {/* <Button value="Sign Up" /> */}
                         <Button label="SIGN UP" size="small" />
                     </div>
                 </div>

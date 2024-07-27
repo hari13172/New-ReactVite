@@ -4,7 +4,7 @@ import Badge from "../components/Badge";
 import pro from "../../public/images/pro.png";
 import { FaCopy, FaPlay } from "react-icons/fa";
 import Copy from "../components/Copy";
-import { BiSolidUpArrow } from "react-icons/bi";
+import { BiSolidDownArrow, BiSolidUpArrow } from "react-icons/bi";
 // import LineChart from "../components/LineChart";
 import { useState } from "react";
 // import Line from "../components/Line";
@@ -13,7 +13,7 @@ import { Button } from 'primereact/button';
 function LabUbuntu() {
   const pageTitle = "Labs/ubuntu";
 
-  const [terminalstate, SetTerminalState] = useState(false)
+  const [terminalState, SetTerminalState] = useState(false)
   const [showPopup, setShowPopup] = useState(false);
   const [deployed, setDeployed] = useState(false)
   const [showRedeployPopup, setShowRedeployPopup] = useState(false);
@@ -24,7 +24,7 @@ function LabUbuntu() {
   };
 
   const toggleTerminal = () => {
-    SetTerminalState(!terminalstate)
+    SetTerminalState(!terminalState)
   }
 
   const handleReDeploy = () => {
@@ -37,7 +37,7 @@ function LabUbuntu() {
         <BreadCrumb title={pageTitle} icon={<SiQwiklabs />} />
       </span>
 
-      <div className={`w-full flex mt-6 justify-between p-6 rounded-2xl bg-white shadow-lg ${showPopup ? "filter blur-sm brightness-75" : ""} ${showRedeployPopup ? "filter blur-sm brightness-75" : ""}`}>
+      <div className={`lg:w-full lg:flex mt-6 lg:justify-between justify-center items-center  p-6 rounded-2xl bg-white shadow-lg ${showPopup ? "filter blur-sm brightness-75" : ""} ${showRedeployPopup ? "filter blur-sm brightness-75" : ""}`}>
         <div className="flex justify-between items-center gap-[30px]">
           <img alt="" src={pro} width="80px" />
           <div className="flex flex-col items-start justify-center gap-2">
@@ -53,7 +53,7 @@ function LabUbuntu() {
 
         <div>
           {!deployed ? (
-            <div onClick={togglePopup} className="w-fit h-[40px] mt-5 text-center flex px-4 gap-2 items-center bg-green-500">
+            <div onClick={togglePopup} className="lg:w-fit p-2 mt-5  justify-center text-center flex px-4 gap-2 items-center bg-green-500">
               <FaPlay className="text-white text-2xl" />
               <button className="text-white">Deploy</button>
             </div>
@@ -123,7 +123,7 @@ function LabUbuntu() {
 
 
 
-      <div className="w-full flex p-[20px] px-[38px] justify-between items-start rounded-2xl bg-white gap-[50px] mt-[30px] relative shadow-lg">
+      <div className="w-full flex lg:flex-row flex-col p-[20px] px-[38px] justify-between items-start rounded-2xl bg-white gap-[50px] mt-[30px] relative shadow-lg ">
         <style>{`
           .custom-divider {
             position: absolute;
@@ -136,8 +136,7 @@ function LabUbuntu() {
             border-radius: 8px;
           }
         `}</style>
-        <div className="left w-[50%] ">
-          <div className=""></div>
+        <div className=" lg:w-[50%] w-full ">
           <h3 className="text-lg rounded-md bg-gray-100 font-normal p-2 text-center">
             Read Me
           </h3>
@@ -160,7 +159,7 @@ function LabUbuntu() {
 
         <div className="custom-divider"></div>
 
-        <div className="w-[50%] flex flex-col gap-4 px-2">
+        <div className="lg:w-[50%] w-full flex flex-col gap-4 px-2">
           <h3 className="text-lg rounded-md bg-gray-100 font-normal p-2 text-center">
             Lab information
           </h3>
@@ -227,17 +226,41 @@ function LabUbuntu() {
         </div>
       </div>
 
-      <div className={`fixed  -right-2 bottom-0  w-[calc(100%-90px)] bg-blue-950 rounded-lg shadow-2xl  ${terminalstate ? "top-[70%]" : "bottom-0"}`}>
+      <div className={`fixed -right-0 bottom-0 w-full lg:w-[calc(100%-96px)] bg-blue-950  z-0 shadow-2xl  ${terminalState ? "top-[70%]" : "-bottom-7"}`}>
         <div className="flex items-center justify-between py-2 px-8 bg-white">
           <h1>Terminal</h1>
           <BiSolidUpArrow onClick={toggleTerminal} />
         </div>
         <div>
-          {/* <h1>(labs💻️youngstorage)$</h1> */}
+          <h1>(labs💻️youngstorage)$</h1>
+          <h1>(labs💻️youngstorage)$</h1>
         </div>
 
       </div>
 
+
+      {/* <div
+        className={`fixed bottom-0 right-0 w-full bg-blue-950 z-50 shadow-2xl transition-transform duration-300 ${terminalState ? 'translate-y-0' : 'translate-y-full'
+          }`}
+      >
+        <div className="flex items-center justify-between  px-8 bg-white">
+          <h1>Terminal</h1>
+          {terminalState ? (
+            <BiSolidDownArrow onClick={toggleTerminal} />
+          ) : (
+            <BiSolidUpArrow onClick={toggleTerminal} />
+          )}
+        </div>
+        <div className="text-white p-4">
+          <h1>(labs💻️youngstorage)$</h1>
+          <h1>(labs💻️youngstorage)$</h1>
+          <h1>(labs💻️youngstorage)$</h1>
+          <h1>(labs💻️youngstorage)$</h1>
+          <h1>(labs💻️youngstorage)$</h1>
+          <h1>(labs💻️youngstorage)$</h1>
+          <h1>(labs💻️youngstorage)$</h1>
+        </div>
+      </div> */}
 
 
 
