@@ -1,8 +1,5 @@
-import React, { useState } from "react";
-import { AiFillAlipaySquare } from "react-icons/ai";
-import { BsArrowLeftShort } from "react-icons/bs";
+import { useState } from "react";
 import { FaHome } from "react-icons/fa";
-import { FaNetworkWired } from "react-icons/fa6";
 import { GrServices } from "react-icons/gr";
 import { RiDashboardFill } from "react-icons/ri";
 import { TbCloudNetwork, TbWorldPlus } from "react-icons/tb";
@@ -13,7 +10,7 @@ import { MdArrowForwardIos } from "react-icons/md";
 function SideBar() {
   const [open, setOpen] = useState(false);
   const location = useLocation();
-  const [breadcrumbTitle, setBreadcrumbTitle] = useState("Home");
+  const [__, setBreadcrumbTitle] = useState("Home");
 
   const Menus = [
     { id: 1, title: "Home", path: "/1/home", icon: <FaHome /> },
@@ -23,7 +20,7 @@ function SideBar() {
     { id: 5, title: "Domains", path: "/4/domains", icon: <TbWorldPlus /> },
   ];
 
-  const handleMenuClick = (title) => {
+  const handleMenuClick = (title: any) => {
     setBreadcrumbTitle(title);
   };
 

@@ -106,7 +106,7 @@ const chartConfig = {
 export default function Example() {
     return (
         <Card className='bg-transparent w-0 '>
-            <CardBody className="">
+            <CardBody className="p-2">
                 <Chart {...chartConfig} />
             </CardBody>
         </Card>

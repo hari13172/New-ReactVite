@@ -17,31 +17,7 @@ import Card from '../components/Card'
 function Network() {
   const pageTitle = "Network";
   const [showModal, setShowModal] = useState(false);
-  // const toast = useRef<Toast>(null);
 
-  // const showSuccess = () => {
-  //     toast.current?.show({severity:'success', summary: 'Success', detail:'Message Content', life: 3000});
-  // }
-
-  // const showInfo = () => {
-  //     toast.current?.show({severity:'info', summary: 'Info', detail:'Message Content', life: 3000});
-  // }
-
-  // const showWarn = () => {
-  //     toast.current?.show({severity:'warn', summary: 'Warning', detail:'Message Content', life: 3000});
-  // }
-
-  // const showError = () => {
-  //     toast.current?.show({severity:'error', summary: 'Error', detail:'Message Content', life: 3000});
-  // }
-
-  // const showSecondary = () => {
-  //     toast.current?.show({ severity: 'secondary', summary: 'Secondary', detail: 'Message Content', life: 3000 });
-  // };
-
-  // const showContrast = () => {
-  //     toast.current?.show({ severity: 'contrast', summary: 'Contrast', detail: 'Message Content', life: 3000 });
-  // };
 
   const options = [
     { label: "Laptop", value: "Laptop" },
